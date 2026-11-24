@@ -76,11 +76,12 @@ Use this to scaffold a brand new Python project with the correct structure and f
 3. Choose a template type:
    - **Package**: A structured Python package with `pyproject.toml`, tests folder, and package directory
    - **Flask**: A Flask web application with `pyproject.toml`, an application module, and tests
+   - **Django**: A Django project with `pyproject.toml`, `manage.py`, and tests
    - **Script**: A simple standalone Python file using PEP 723 inline metadata
 4. Enter a name for your project.
-5. If you're creating a package or a Flask project, choose whether to create a virtual environment.
+5. If you're creating a package, a Flask project, or a Django project, choose whether to create a virtual environment.
 
-The extension creates the project structure and adds it to your workspace. For packages and Flask projects, it can also create a virtual environment.
+The extension creates the project structure and adds it to your workspace. For packages, Flask projects, and Django projects, it can also create a virtual environment.
 
 #### Package template structure
 
@@ -113,6 +114,28 @@ my_flask_project/
 ```
 
 The workspace `launch.json` gains a **Python: Flask (my_flask)** configuration that debugs `flask run` for `my_flask.main:app`.
+
+#### Django template structure
+
+When you create a Django project named `my_django`, the extension generates:
+
+```
+my_django_project/
+├── pyproject.toml          # Project metadata and Django
+├── dev-requirements.txt    # Development dependencies, including pytest
+├── manage.py               # Django management commands
+├── my_django/              # Project package
+│   ├── __init__.py
+│   ├── __main__.py         # `python -m my_django` runs the development server
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+└── tests/
+    └── test_my_django.py
+```
+
+The workspace `launch.json` gains a **Python: Django (my_django)** configuration that debugs `manage.py runserver`. The project requires Python 3.10 or newer.
 
 #### Script template
 
@@ -294,7 +317,7 @@ Access these via the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
 
 | Command | Description |
 |---------|-------------|
-| **Python Envs: Create New Project from Template** | Create a new package, Flask app, or script from a template |
+| **Python Envs: Create New Project from Template** | Create a new package, Flask app, Django project, or script from a template |
 | **Python Envs: Add Python Project** | Add existing files/folders as projects |
 | **Python Envs: Set Project Environment** | Change the Python interpreter for a project |
 | **Python Envs: Set Environment Manager** | Change how environments are created |

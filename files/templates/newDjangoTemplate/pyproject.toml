@@ -1,0 +1,20 @@
+[project]
+name = "package_name"
+version = "1.0.0"
+description = "" #TODO: Add a short description of your Django project
+authors = [{name = "Your Name", email = "your@email.com"}] #TODO: Add your name and email
+requires-python = ">=3.10"
+dependencies = [
+    "django",
+]
+dynamic = ["optional-dependencies"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+optional-dependencies = {dev = {file = ["dev-requirements.txt"]}} # add packages for development in the dev-requirements.txt file
+
+[project.scripts]
+package_name = "package_name.__main__:main"

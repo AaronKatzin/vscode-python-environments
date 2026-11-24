@@ -42,6 +42,7 @@ import { getPythonApi, setPythonApi } from './extensionApi';
 import { createManagerReady } from './features/common/managerReady';
 import { AutoFindProjects } from './features/creators/autoFindProjects';
 import { ExistingProjects } from './features/creators/existingProjects';
+import { NewDjangoProject } from './features/creators/newDjangoProject';
 import { NewFlaskProject } from './features/creators/newFlaskProject';
 import { NewPackageProject } from './features/creators/newPackageProject';
 import { NewScriptProject } from './features/creators/newScriptProject';
@@ -208,6 +209,7 @@ export async function activate(context: ExtensionContext): Promise<PythonEnviron
         projectCreators.registerPythonProjectCreator(new AutoFindProjects(projectManager, envManagers)),
         projectCreators.registerPythonProjectCreator(new NewPackageProject(envManagers, projectManager)),
         projectCreators.registerPythonProjectCreator(new NewFlaskProject(envManagers, projectManager)),
+        projectCreators.registerPythonProjectCreator(new NewDjangoProject(envManagers, projectManager)),
         projectCreators.registerPythonProjectCreator(new NewScriptProject(projectManager)),
     );
 

@@ -1,5 +1,6 @@
 import { Disposable } from 'vscode';
 import type { PythonProjectCreator } from '../../api';
+import { DJANGO_CREATOR_NAME, DJANGO_PROJECT_TYPE } from './newDjangoProject';
 import { FLASK_CREATOR_NAME, FLASK_PROJECT_TYPE } from './newFlaskProject';
 
 /**
@@ -15,6 +16,8 @@ export function creatorNameForQuickCreateProjectType(projectType: string): strin
             return 'newScript';
         case FLASK_PROJECT_TYPE:
             return FLASK_CREATOR_NAME;
+        case DJANGO_PROJECT_TYPE:
+            return DJANGO_CREATOR_NAME;
         default:
             return undefined;
     }
